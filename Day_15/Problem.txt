@@ -9,13 +9,13 @@ S = "geeksforgeeks"
 Output:
 gksforgks
 Explanation:
-Modified String after each step: 
+Modified String after each step:
 "geegsforgeeks" -> "gksforgks"
 Example 2:
 
 Input:
 K = 2
-S = "geegsforgeeeks" 
+S = "geegsforgeeeks"
 Output:
 sforgeks
 Explanation:
