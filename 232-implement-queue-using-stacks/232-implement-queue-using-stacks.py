@@ -7,20 +7,25 @@ class MyQueue:
         
 
     def push(self, x: int) -> None:
-        while self.st1:
-            self.st2.append(self.st1.pop())
         self.st1.append(x)
-        while self.st2:
-            self.st1.append(self.st2.pop())
-
     def pop(self) -> int:
-        return self.st1.pop()
+        if len(self.st2):
+            return self.st2.pop()
+        else:
+            while self.st1:
+                self.st2.append(self.st1.pop())
+            return self.st2.pop()
 
     def peek(self) -> int:
-        return self.st1[-1]
+        if len(self.st2):
+            return self.st2[-1]
+        else:
+            while self.st1:
+                self.st2.append(self.st1.pop())
+            return self.st2[-1]
 
     def empty(self) -> bool:
-        if len(self.st1):
+        if len(self.st1) or len(self.st2):
             return False
         else:
             return True
