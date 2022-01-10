@@ -4,14 +4,13 @@ class Solution:
         cols = len(grid[0])
         q = deque()
         fresh = 0
-        rot = 0
         for i in range(rows):
             for j in range(cols):
                 if grid[i][j] == 1:
                     fresh += 1
                 if grid[i][j] == 2:
                     q.append((i,j))
-                    rot += 1
+
         if fresh == 0:
             return 0
         adjacent = [[-1,0],[0,1],[1,0],[0,-1]]
@@ -28,6 +27,8 @@ class Solution:
                         fresh -= 1
                         flag = True
                         q.append((r,c))
+                        if fresh == 0:
+                            break
                 size -= 1
             if flag:
                 mn += 1
