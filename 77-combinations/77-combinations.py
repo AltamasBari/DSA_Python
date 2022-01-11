@@ -5,12 +5,12 @@ class Solution:
         self.recursion(res,temp,n,k)
         return res
     def recursion(self,res,temp,n,k):
-        if len(temp) == k:
+        if k == 0:
             res.append(temp.copy())
             return 
         if n == 0:
             return 
         temp.append(n)
-        self.recursion(res,temp,n-1,k)
+        self.recursion(res,temp,n-1,k-1)
         temp.pop()
         self.recursion(res,temp,n-1,k)
