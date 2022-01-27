@@ -14,7 +14,5 @@ class Solution:
         if not root.left and not root.right and sm == targetSum:
             return True
         
-        
-
         return self.dfs(root.left,sm, targetSum) or self.dfs(root.right,sm, targetSum)
         
