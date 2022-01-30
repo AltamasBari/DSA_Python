@@ -10,7 +10,7 @@ class Solution:
         1 6 15 20 15 6 1
         
         '''
-
+        '''
         prev = []
         for i in range(rowIndex+1):
             curr = []
@@ -21,5 +21,14 @@ class Solution:
                     curr.append(prev[j]+prev[j-1])
             prev = curr
         return prev
+        '''
+        temp = [1 for i in range(rowIndex+1)]
+        for i in range(rowIndex+1):
+            for j in reversed(range(i+1)):
+                if j == 0 or j == i:
+                    continue
+                else:
+                    temp[j] = temp[j]+temp[j-1]
+        return temp
         
             
