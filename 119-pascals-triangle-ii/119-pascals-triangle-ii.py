@@ -11,15 +11,15 @@ class Solution:
         
         '''
 
-        res = []
+        prev = []
         for i in range(rowIndex+1):
-            temp = []
+            curr = []
             for j in range(i+1):
                 if j == 0 or j == i:
-                    temp.append(1)
+                    curr.append(1)
                 else:
-                    temp.append(res[-1][j]+res[-1][j-1])
-            res.append(temp)
-        return res[-1]
+                    curr.append(prev[j]+prev[j-1])
+            prev = curr
+        return prev
         
             
