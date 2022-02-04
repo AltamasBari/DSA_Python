@@ -43,12 +43,14 @@ class Solution:
             for j in range(i+1,i+nums[i]+1):
                 dp[j] = recursion(j)
                 if(dp[j]):
+                    dp[i] = True
                     return True
             dp[i] = False
             return False
         
         return recursion(0)
         '''
+        
         n = len(nums)
         dp = [-1 for _ in range(n)]
         dp[n-1] = True
