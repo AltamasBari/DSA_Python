@@ -17,7 +17,8 @@ class Solution:
             
             ans = recursion(idx+1,amt)
             if amt >= coins[idx]:
-                ans = min(1 + recursion(idx,amt-coins[idx]),ans)
+                dp[idx][amt-coins[idx]] = recursion(idx,amt-coins[idx])
+                ans = min(1 + dp[idx][amt-coins[idx]],ans)
             
             dp[idx][amt] = ans
             return ans
