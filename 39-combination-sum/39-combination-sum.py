@@ -7,7 +7,8 @@ class Solution:
             if idx < 0:
                 return         
             if target == 0:
-                res.append(ds.copy())
+                if ds not in res:
+                    res.append(ds.copy())
             dont_take = recursion(idx-1,target,ds)
             if target >= candidates[idx]:
                 ds.append(candidates[idx])
@@ -15,5 +16,5 @@ class Solution:
                 ds.remove(candidates[idx])
             
         recursion(len(candidates)-1,target,ds)
-        res = list(set(tuple(sorted(sub)) for sub in res))
+        #res = list(set(tuple(sorted(sub)) for sub in res))
         return res
