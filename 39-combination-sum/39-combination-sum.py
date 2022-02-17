@@ -7,8 +7,8 @@ class Solution:
             if idx < 0:
                 return         
             if target == 0:
-                if ds not in res:
-                    res.append(ds.copy())
+                res.append(ds.copy())
+                return
             dont_take = recursion(idx-1,target,ds)
             if target >= candidates[idx]:
                 ds.append(candidates[idx])
