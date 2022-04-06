@@ -6,6 +6,8 @@ class Solution:
     def lcs(self,x,y,s1,s2):
         
         # code here
+        '''
+        # memoization
         dp =[[-1 for j in range(y+1)] for i in range(x+1)]
         def recursion(i,j):
 
@@ -25,7 +27,16 @@ class Solution:
         
         
         return recursion(x,y)
-    
+        '''
+        dp =[[0 for j in range(y+1)] for i in range(x+1)]
+        for i in range(1,x+1):
+            for j in range(1,y+1):
+                if s1[i-1] == s2[j-1]:
+                    dp[i][j] = 1 + dp[i-1][j-1]
+                else:
+                    dp[i][j] = max(dp[i-1][j],dp[i][j-1])
+        
+        return dp[x][y]
 
 #{ 
 #  Driver Code Starts
