@@ -1,5 +1,15 @@
 class Solution:
     def maxProfit(self, prices: List[int]) -> int:
+        #greedy approach
+        profit = 0
+        for idx in range( len(prices)-1 ):
+            
+            if prices[idx] < prices[idx+1]:
+                profit += (prices[idx+1] - prices[idx])
+                
+        return profit
+        
+        '''
         #use 2 variable dp or 1d array of size 2 tabulation dp
         n = len(prices)
         nextNotBuy = 0
@@ -13,7 +23,7 @@ class Solution:
             nextBuy = curBuy
 
         return nextBuy       
-        
+        '''
         '''
         2d tabulation dp
         n = len(prices)
