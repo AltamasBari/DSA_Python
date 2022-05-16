@@ -9,6 +9,7 @@ class Solution:
 		 0  1  2  3  4
             i    end		 
 		'''
+		
 		n = len(nums)
         dp = [1 for _ in range(n)]
         dp_reverse = [1 for i in range(n)]
