@@ -14,6 +14,7 @@ class Solution:
             return root
         return self.searchBST(root.left,val) or self.searchBST(root.right,val)
         '''
+        '''
         #O(log N)
         if root == None:
             return None
@@ -24,3 +25,18 @@ class Solution:
             return self.searchBST(root.left,val)
         else:
             return self.searchBST(root.right,val)
+        '''
+        #iterative BFS
+        cur = root
+        
+        while(cur):
+            if cur.val == val:
+                return cur
+            
+            if cur.val > val:
+                cur = cur.left
+            
+            else:
+                cur = cur.right
+        
+        
