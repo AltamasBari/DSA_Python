@@ -8,9 +8,6 @@ def minValue(root):
     if not root:
         return -1
     
-    if root.left == None and root.right == None:
-        return root.data
-    
     if root.left == None:
         return root.data
     
