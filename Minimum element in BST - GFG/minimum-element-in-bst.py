@@ -4,7 +4,7 @@
 #Function to find the minimum element in the given BST.
 def minValue(root):
     ##Your code here
-
+    '''
     if not root:
         return -1
     
@@ -12,7 +12,16 @@ def minValue(root):
         return root.data
     
     return minValue(root.left)
+    '''
+    if not root:
+        return -1
     
+    cur = root
+    while cur:
+        if cur.left == None:
+            return cur.data
+        
+        cur = cur.left
   
 
 
