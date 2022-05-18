@@ -5,19 +5,18 @@
 def minValue(root):
     ##Your code here
 
-    def recursion(root):
-        if not root:
-            return -1
-        
-        if root.left == None and root.right == None:
-            return root.data
-        
-        if root.left == None:
-            return root.data
-        
-        return recursion(root.left)
+    if not root:
+        return -1
     
-    return recursion(root)   
+    if root.left == None and root.right == None:
+        return root.data
+    
+    if root.left == None:
+        return root.data
+    
+    return minValue(root.left)
+    
+  
 
 
 
