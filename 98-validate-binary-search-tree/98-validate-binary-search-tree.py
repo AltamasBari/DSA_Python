@@ -8,11 +8,11 @@ class Solution:
     def isValidBST(self, root: Optional[TreeNode]) -> bool:
         return self.recursion(root, float("-inf"), float("inf"))
 	
-    def recursion(self, node, left, right):
+    def recursion(self, node, minm, maxm):
         if not node:
             return True
 
-        if not left < node.val < right:
+        if not minm < node.val < maxm:
             return False
 
-        return (self.recursion(node.left, left, node.val) and self.recursion(node.right, node.val, right))
+        return (self.recursion(node.left, minm, node.val) and self.recursion(node.right, node.val, maxm))
