@@ -1,17 +1,16 @@
 class Solution:
     def subsets(self, nums: List[int]) -> List[List[int]]:
         '''
-        [1,2,3], []
+        [1,2,3], [3]
          0 1 2
          
          [1,2],[]
          
-         0,[1]
+         0,[]
          
          -1
          
-        '''
-        
+        '''        
         n = len(nums)
         res = []
         
@@ -20,10 +19,11 @@ class Solution:
                 res.append(ds.copy())
                 return
             
-            recursion(idx-1,ds)
+            
             ds.append(nums[idx])
             recursion(idx-1,ds)
             ds.remove(nums[idx])
+            recursion(idx-1,ds)
         
         recursion(n-1,[])
         return res
