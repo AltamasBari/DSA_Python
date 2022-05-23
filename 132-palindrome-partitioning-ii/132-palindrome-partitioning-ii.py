@@ -4,15 +4,22 @@ class Solution:
         n = len(s)    
         dp = [0 for _ in range(n+1)]
         
-        @functools.lru_cache(maxsize=None)
+        dp1 = [[-1 for _ in range(n+1)] for _ in range(n+1)]
         def isPalindrome(i,j):
             if i > j:
+                dp1[i][j] = True
                 return True
-
+            
+            if dp1[i][j] != -1:
+                return dp1[i][j]
+            
             if s[i] != s[j]:
+                dp1[i][j] = False
                 return False
-            return isPalindrome(i+1,j-1)
-
+            
+            dp1[i][j] = isPalindrome(i+1,j-1)
+            return dp1[i][j]
+        
         for i in reversed(range(n)):
             min_cost = float('inf')
             for j in range(i,n):
