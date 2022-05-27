@@ -8,13 +8,11 @@ class Solution:
             maxm = max(maxm,height[i])
             temp[i] = maxm
         
+        ans = 0
         maxm = float('-inf')
         for i in reversed(range(n)):
             maxm = max(maxm,height[i])
             temp[i] = min(maxm,temp[i])
-        
-        ans = 0
-        for i in range(n):
             ans += (temp[i] - height[i])
             
         return ans
