@@ -9,10 +9,17 @@ class Solution:
         
         dp[0][0] = True
         
-        for j in range(1, len(p)+1):
-            if p[j-1] != '*':
-                break
-            dp[0][j] = True
+        for i in range(1,m+1):   #if j < 0 and i >= 0: return False -> j == 0 and i > 0
+            dp[i][0] = False
+        
+        
+        for j in range(1,n+1):
+            flag = True
+            for idx in range(1,j+1):
+                if p[idx-1] != '*':
+                    flag = False
+                    break
+            dp[0][j] = flag
             
         for i in range(1,m+1):
             for j in range(1,n+1):
