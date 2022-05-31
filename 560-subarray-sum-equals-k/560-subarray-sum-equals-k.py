@@ -1,5 +1,6 @@
 class Solution:
     def subarraySum(self, nums: List[int], k: int) -> int:
+
         dict = {}
         count = 0
         sm = 0
@@ -11,3 +12,4 @@ class Solution:
                             
             dict[sm] = dict.get(sm,0) + 1
         return count
+        
