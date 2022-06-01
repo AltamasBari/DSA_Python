@@ -9,15 +9,17 @@ class Solution:
                 ans.append(ds.copy())
                 return
             
-            if idx > n:
+            if idx == n:
+                return
+            
+            if candidates[idx] > target:
                 return
             
             for i in range(idx,n):
                 if i > idx and candidates[i] == candidates[i-1]:
                     continue
                     
-                if candidates[i] > target:
-                    break
+
                 ds.append(candidates[i])
                 recursion(i+1,ds,target - candidates[i])
                 ds.remove(candidates[i])
