@@ -9,11 +9,15 @@ class Solution:
         res = []
         
         def dfs(x):
-            res.append(x)
-            vis[x] = 1
+            if vis[x] == 0:
+                res.append(x)
+                vis[x] = 1
+            
+            else:
+                return
+            
             for y in adj[x]:
-                if vis[y] == 0:
-                    dfs(y)
+                dfs(y)
         
         dfs(0)
         return res
