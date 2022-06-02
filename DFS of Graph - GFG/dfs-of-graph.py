@@ -13,7 +13,6 @@ class Solution:
             vis[x] = 1
             for y in adj[x]:
                 if vis[y] == 0:
-                    vis[y] = 1
                     dfs(y)
         
         dfs(0)
