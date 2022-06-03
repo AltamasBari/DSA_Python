@@ -11,9 +11,28 @@ class Solution:
                     if vis[i] == 0:
                         dfs(i)
             
+        def bfs(idx):
+            q = collections.deque()
+            
+            q.append(idx)
+            
+            while q:
+                node = q.popleft()
+                
+                if vis[node] == 0:
+                    vis[node] = 1
+                    for i in range(n):
+                        if i != idx and isConnected[node][i] == 1:
+                            if vis[i] == 0:
+                                q.append(i)
+                else:
+                    continue
+            
+            
         for i in range(n):
             if vis[i] == 0:
-                dfs(i)
+                #dfs(i)
+                bfs(i)
                 count += 1
                 
         return count
