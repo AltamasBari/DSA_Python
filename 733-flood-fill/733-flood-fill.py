@@ -5,7 +5,6 @@ class Solution:
         color_to_change = image[sr][sc]
         
         def dfs(r, c):
-            nonlocal rows, cols, newColor, image
             
             if r < 0 or c < 0 or r>rows-1 or c>cols-1 or image[r][c]==newColor or image[r][c]!=color_to_change:
                 return
