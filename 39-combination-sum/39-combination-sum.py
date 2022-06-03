@@ -2,19 +2,19 @@ class Solution:
     def combinationSum(self, candidates: List[int], target: int) -> List[List[int]]:
         res = []
         ds = []
+        n = len(candidates)
         def recursion(idx,target,ds):
             
-            if idx < 0:
+            if idx == n:
                 return         
             if target == 0:
                 res.append(ds.copy())
                 return
-            dont_take = recursion(idx-1,target,ds)
+            dont_take = recursion(idx+1,target,ds)
             if target >= candidates[idx]:
                 ds.append(candidates[idx])
                 take = recursion(idx,target-candidates[idx],ds)
                 ds.remove(candidates[idx])
             
-        recursion(len(candidates)-1,target,ds)
-        #res = list(set(tuple(sorted(sub)) for sub in res))
+        recursion(0,target,ds)
         return res
