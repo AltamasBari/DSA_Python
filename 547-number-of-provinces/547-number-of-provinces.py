@@ -25,10 +25,6 @@ class Solution:
                         if i != idx and isConnected[node][i] == 1:
                             if vis[i] == 0:
                                 q.append(i)
-                else:
-                    continue
-            
-            
         for i in range(n):
             if vis[i] == 0:
                 #dfs(i)
