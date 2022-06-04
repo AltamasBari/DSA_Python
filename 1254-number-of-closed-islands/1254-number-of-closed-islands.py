@@ -6,6 +6,47 @@ class Solution:
         
         adj = [[-1,0],[1,0],[0,-1],[0,1]]
         
+        def bfs(i,j):
+            grid[i][j] = 1
+            q = deque()
+            q.append([i,j])
+
+            while q:
+                a,b = q.popleft()
+                for x,y in adj:
+                    row = x+a
+                    col = y+b
+                    if row >= 0 and row < m and col >= 0 and col < n and grid[row][col] == 0:
+                        r,c = row,col
+                        grid[row][col] = 1
+                        q.append([row,col])
+            return 1
+        
+        for i in range(m):
+            for j in range(n):
+                if (i == 0 or j == 0 or i == m-1 or j == n-1) and grid[i][j] == 0:
+                    bfs(i,j)
+                    
+        for i in range(m):
+            for j in range(n):
+                if grid[i][j] == 0:
+                    bfs(i,j)
+                    count += 1
+        
+        return count
+        
+            
+        '''
+        Ignore the edges.
+        Only starts the calculation from 1 to m-1,1 to n-1 (dont go beyond that) when the grid is zero.
+        Store the path, check each cell
+        
+        count  = 0
+        m = len(grid)
+        n = len(grid[0])
+        
+        adj = [[-1,0],[1,0],[0,-1],[0,1]]
+        
         def bfs(i,j,path):
             
             grid[i][j] = 1
@@ -32,7 +73,6 @@ class Solution:
                             break
                     else:
                         count += 1
-        print(grid)
         return count
-        
+        '''
         
