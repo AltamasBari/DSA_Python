@@ -20,13 +20,15 @@ class Solution:
                         r,c = row,col
                         grid[row][col] = 1
                         q.append([row,col])
-            return 1
+            return 
         
+        # Exclude connected group of 0s on the edges because they are not closed island.
         for i in range(m):
             for j in range(n):
                 if (i == 0 or j == 0 or i == m-1 or j == n-1) and grid[i][j] == 0:
                     bfs(i,j)
-                    
+        
+        # Count the number of connected component of 0s on the grid.
         for i in range(m):
             for j in range(n):
                 if grid[i][j] == 0:
