@@ -8,7 +8,7 @@ class Solution:
         def dfs(i,j,temp):
         
             if i == n-1 and j == n-1 and m[i][j] == 1:
-                ans.append("".join(temp))
+                ans.append(temp)
                 return
             
             if i < 0 or j < 0 or i >= n or j >= n or m[i][j] == 0 or m[i][j] == 2:
