@@ -1,5 +1,25 @@
 class Solution:
     def permute(self, nums: List[int]) -> List[List[int]]:
+        #TC: n! * n
+        #SC: O(n) for ds
+        n = len(nums)
+        res = []
+
+        def recursion(idx):
+            if idx == n:
+                res.append(nums.copy())
+                return
+            for i in range(idx,n):
+                    nums[idx],nums[i] = nums[i],nums[idx]
+                    recursion(idx+1)
+                    nums[idx],nums[i] = nums[i],nums[idx]
+        recursion(0)
+        return res
+        
+        
+        '''
+        #TC: n! * n
+        #SC: O(n) for ds + O(n) for mp 
         n = len(nums)
         res = []
         mp = [False for _ in range(n)]
@@ -18,4 +38,4 @@ class Solution:
                     ds.pop()
         recursion([],mp)
         return res
-
+        '''
