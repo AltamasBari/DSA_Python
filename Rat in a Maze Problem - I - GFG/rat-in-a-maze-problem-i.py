@@ -16,23 +16,27 @@ class Solution:
             
 
             m[i][j] = 2
-            temp += ["D"]
+            temp += "D"
             dfs(i+1,j,temp)
-            temp.pop()
-            temp += ["R"]
+            temp = temp[:-1]
+            
+            temp += "R"
             dfs(i,j+1,temp)
-            temp.pop()    
-            temp += ["U"]
+            temp = temp[:-1]
+            
+            temp += "U"
             dfs(i-1,j,temp)
-            temp.pop()    
-            temp += ["L"]
+            temp = temp[:-1]
+            
+            temp += "L"
             dfs(i,j-1,temp)
-            temp.pop()
+            temp = temp[:-1]
+            
             m[i][j] = 1
             
             return
         
-        dfs(0,0,[])
+        dfs(0,0,"")
         return (ans)
 #{ 
 #  Driver Code Starts
