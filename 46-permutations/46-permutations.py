@@ -2,9 +2,7 @@ class Solution:
     def permute(self, nums: List[int]) -> List[List[int]]:
         n = len(nums)
         res = []
-        
         mp = [False for _ in range(n)]
-        
         def recursion(ds,mp):
             if len(ds) == n:
                 res.append(ds.copy())
@@ -18,7 +16,6 @@ class Solution:
 
                     mp[x] = False
                     ds.pop()
-        
         recursion([],mp)
         return res
 
