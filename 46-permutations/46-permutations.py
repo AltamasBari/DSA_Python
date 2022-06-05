@@ -1,19 +1,24 @@
 class Solution:
     def permute(self, nums: List[int]) -> List[List[int]]:
-        m = n = len(nums)
+        n = len(nums)
         res = []
-        temp = []
-        mp = [False for _ in range(m)]
-        self.recursion(res,temp,nums,mp,n)
+        
+        mp = [False for _ in range(n)]
+        
+        def recursion(ds,mp):
+            if len(ds) == n:
+                res.append(ds.copy())
+                return
+            for x in range(n):
+                if mp[x] == False:
+                    mp[x] = True
+                    ds.append(nums[x])
+
+                    recursion(ds,mp)
+
+                    mp[x] = False
+                    ds.pop()
+        
+        recursion([],mp)
         return res
-    def recursion(self,res,temp,nums,mp,n):
-        if len(temp) == n:
-            res.append(temp.copy())
-            return
-        for m in range(n):
-            if mp[m] == False:
-                mp[m] = True
-                temp.append(nums[m])
-                self.recursion(res,temp,nums,mp,n)
-                mp[m] = False
-                temp.pop()
+
