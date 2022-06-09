@@ -1,11 +1,41 @@
 #User function Template for python3
 
-
+import collections
 class Solution:
     
     #Function to detect cycle in a directed graph.
     def isCyclic(self, V, adj):
         # code here
+        
+        #Kahn algorithm
+        
+        inDegree = [0 for _ in range(V)]
+        for lst in adj:
+            for node in lst:
+                inDegree[node] += 1
+            
+        q = collections.deque()
+        
+        for i in range(V):
+            if inDegree[i] == 0:
+                q.append(i)
+        
+        count = 0       
+        while q:
+            node = q.popleft()
+            count += 1
+
+            for nxt in adj[node]:
+                inDegree[nxt] -= 1
+                if inDegree[nxt] == 0:
+                    q.append(nxt)
+
+        if count == V:
+            return False # no cycle: no dependencies
+            
+        return True
+        
+        '''
         vis = [0 for _ in range(V)]
         dfs_vis = [0 for _ in range(V)]
         
@@ -30,7 +60,7 @@ class Solution:
                     return True
         
         return False
-
+        '''
 #{ 
 #  Driver Code Starts
 #Initial Template for Python 3
