@@ -7,7 +7,6 @@ class Solution:
     def isAnagram(self,a,b):
         #code here
         return sorted(a) == sorted(b)
-
 #{ 
 #  Driver Code Starts
 #Initial Template for Python 3
