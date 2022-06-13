@@ -3,18 +3,23 @@ class Solution:
         n = len(nums)
         ans = []
         q = collections.deque([])
+        i = 0
+        j = 0
         
-        
-        for i in range(n):
+        while j < n:
             
-            if q and q[0] == i - k:
-                q.popleft()
-                
-            while q and nums[q[-1]] <= nums[i]:
+            while q and q[-1] < nums[j]: 
+            # q in decreasing order [7 4 3 1] and now we encounter 5,
+            # other value less than 5 or equal to , are of no use in future
                 q.pop()
-            
-            q.append(i)
-            if i >= k - 1:
-                ans.append(nums[q[0]])
+            q.append(nums[j])
+
+            if (j-i+1) == k:
+                ans.append(q[0])
+                if q[0] == nums[i]:
+                    q.popleft()
+                i += 1
+                
+            j += 1
         
         return ans
