@@ -10,11 +10,11 @@ class Solution:
             sm += Arr[j]  #calculation on j only
             
             if (j-i+1) == K: #window size achieved
-                res = max(res,sm) # calculations
-                sm -= Arr[i]
-                i += 1  #maintain window size
+                res = max(res,sm) 
+                sm -= Arr[i] # calculations on i
+                i += 1  #increment i  - slide the window : start postn
             
-            j += 1  #increment j
+            j += 1  #increment j - slide the window : end postn
         
         return res
 
