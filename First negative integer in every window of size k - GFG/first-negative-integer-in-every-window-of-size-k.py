@@ -9,19 +9,19 @@ def printFirstNegativeInteger( A, N, K):
     ans = []
     
     while j < N:
-        if A[j] < 0:
+        if A[j] < 0:    #calculations on ij
             q.append(A[j])
             
-        if (j - i + 1) == K:
+        if (j - i + 1) == K: #window size achieved
             if q:
                 ans.append(q[0])
-                if q[0] == A[i]:
+                if q[0] == A[i]: #calculation on i to maintain window size
                     q.popleft()
             else:
                 ans.append(0)
-            i += 1
+            i += 1  #increment i  - slide the window : start postn
         
-        j += 1
+        j += 1 #increment j - slide the window : end postn
     
     return ans
 #{ 
