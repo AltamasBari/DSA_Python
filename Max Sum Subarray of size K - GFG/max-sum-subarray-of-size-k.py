@@ -7,17 +7,16 @@ class Solution:
         sm = 0
         res = 0
         while j < N:
-            sm += Arr[j]
-            if (j - i + 1) < K:
-                j += 1
-            elif (j-i+1) == K:
-                res = max(res,sm)
+            sm += Arr[j]  #calculation on j only
+            
+            if (j-i+1) == K: #window size achieved
+                res = max(res,sm) # calculations
                 sm -= Arr[i]
-                i += 1
-                j += 1
+                i += 1  #maintain window size
+            
+            j += 1  #increment j
         
         return res
-            
 
 #{ 
 #  Driver Code Starts
