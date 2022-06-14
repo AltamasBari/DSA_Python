@@ -1,13 +1,27 @@
 class Solution:
     def minDistance(self, word1: str, word2: str) -> int:
-        x = len(word1)
-        y = len(word2)
-        dp =[[0 for j in range(y+1)] for i in range(x+1)]
-        for i in range(1,x+1):
-            for j in range(1,y+1):
-                if word1[i-1] == word2[j-1]:
-                    dp[i][j] = 1 + dp[i-1][j-1]
-                else:
-                    dp[i][j] = max(dp[i-1][j],dp[i][j-1])
+        m = len(word1)
+        n = len(word2)
         
-        return x+y - (2 *dp[x][y])
+        #ans will be: m + n - (2*LCS)
+        
+        
+        dp = [[-1 for _ in range(n+1)] for _ in range(m+1)]
+        
+        def recursion(i,j):
+            if i == 0 or j == 0:
+                dp[i][j] = 0
+                return dp[i][j]
+            
+            if dp[i][j] != -1:
+                return dp[i][j]
+            
+            if word1[i-1] == word2[j-1]:
+                dp[i][j] = 1 + recursion(i-1,j-1)
+                return dp[i][j]
+            
+            else:
+                dp[i][j] = 0 + max(recursion(i-1,j),recursion(i,j-1))
+                return dp[i][j]
+        
+        return m+n - (2*recursion(m,n))
