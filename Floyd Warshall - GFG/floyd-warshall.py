@@ -13,8 +13,8 @@ class Solution:
                     k_j = float('inf') if matrix[k][j] == -1 else matrix[k][j]
                     matrix[i][j] = min(i_j, i_k + k_j)
                     
-                    if matrix[i][j] == float('inf'):
-                        matrix[i][j] = -1
+                    #if matrix[i][j] == float('inf'):
+                    #   matrix[i][j] = -1
 
 #{ 
 #  Driver Code Starts
