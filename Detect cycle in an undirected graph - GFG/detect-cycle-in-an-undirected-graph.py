@@ -10,10 +10,12 @@ class Solution:
 		    vis[node] = 1
 		    
 		    for nxt in adj[node]:
-		        if vis[nxt] == 0:
+		        if vis[nxt] == 0: # not visited call dfs
 		            if dfs(nxt,node):
 		                return True
-		        elif nxt != parent:
+		                
+		        elif nxt != parent: #nxt is the node already visited earlier than prev
+		        # it is not parent(just prev) : cycle
 		            return True
 		    return False
 		    
