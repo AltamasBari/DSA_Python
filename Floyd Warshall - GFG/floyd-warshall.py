@@ -12,6 +12,7 @@ class Solution:
                     i_k = float('inf') if matrix[i][k] == -1 else matrix[i][k]
                     k_j = float('inf') if matrix[k][j] == -1 else matrix[k][j]
                     matrix[i][j] = min(i_j, i_k + k_j)
+    
 
 #{ 
 #  Driver Code Starts
