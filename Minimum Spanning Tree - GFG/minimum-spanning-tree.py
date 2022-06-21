@@ -19,9 +19,9 @@ class Solution:
             
             costs[node] = weight
             for nxt_node,nxt_weight in adj[node]:
+                if costs[nxt_node] != -1:
+                    continue
                 heapq.heappush(q,[nxt_weight,nxt_node])
-                
-                
         return sum(costs)
 
 #{ 
