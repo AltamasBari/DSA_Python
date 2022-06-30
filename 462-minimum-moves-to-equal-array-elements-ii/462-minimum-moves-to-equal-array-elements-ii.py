@@ -5,5 +5,5 @@ class Solution:
         nums.sort ()
         res = 0
         for i in range (n):
-            res = res + abs (nums [i] - nums [mid])
+            res += abs (nums [i] - nums [mid])
         return res
