@@ -24,7 +24,7 @@ class Solution:
                 self.ans = max(self.ans,sm)
                 return sm,True, min(root.val,mn1,mn2),max(root.val,mx1,mx2)
             
-            return 0,False,float('inf'),float('-inf')
+            return 0,False,0,0
             
                 
         recursion(root)
