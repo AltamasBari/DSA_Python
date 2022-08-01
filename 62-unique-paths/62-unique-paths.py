@@ -6,6 +6,7 @@ class Solution:
             if i == 0 and j == 0:
                 dp[i][j] = 1
                 return dp[i][j]
+            
             if i < 0 or j < 0:
                 return 0
             
@@ -15,5 +16,4 @@ class Solution:
             dp[i][j] = recursion(i-1,j) + recursion(i,j-1)
             return dp[i][j]
         
-        recursion(m-1,n-1)
-        return dp[m-1][n-1]
+        return recursion(m-1,n-1)
