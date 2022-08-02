@@ -17,7 +17,8 @@ class Solution:
         min_so_far = prices[0]
         max_profit = 0
         for i in range(1,n):
+            min_so_far = min(prices[i],min_so_far)
             curr_profit = prices[i] - min_so_far
             max_profit = max(curr_profit,max_profit)
-            min_so_far = min(prices[i],min_so_far)
+            
         return max_profit
