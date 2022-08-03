@@ -7,9 +7,11 @@ class Solution:
         adj = [[-1,0],[1,0],[0,-1],[0,1]]
         
         def bfs(i,j):
-            grid[i][j] = '0'
             q = deque()
+            
+            grid[i][j] = '0'
             q.append([i,j])
+            
             while q:
                 a,b = q.popleft()
                 for x,y in adj:
