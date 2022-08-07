@@ -2,28 +2,28 @@ class Solution:
     def coinChange(self, coins: List[int], amount: int) -> int:
         n = len(coins)
         dp = [[-1 for _ in range(amount+1)] for _ in range(n+1)]
-        @lru_cache(None)
+
         def recursion(idx,amt):
             
             if amt == 0:
-                dp[idx][amt] = 0
                 return 0
             
             if idx == n:
-                dp[idx][amt] = math.inf
                 return math.inf
+            
             if(dp[idx][amt] != -1):
                 return dp[idx][amt]
             
-            ans = recursion(idx+1,amt)
+            not_pick = recursion(idx+1,amt)
+            pick = math.inf
             if amt >= coins[idx]:
-                dp[idx][amt-coins[idx]] = recursion(idx,amt-coins[idx])
-                ans = min(1 + dp[idx][amt-coins[idx]],ans)
+                pick = 1 + recursion(idx,amt - coins[idx])
             
-            dp[idx][amt] = ans
-            return ans
+            dp[idx][amt] = min(not_pick,pick)
+            return dp[idx][amt]
         
         ans = recursion(0,amount)
-        if(ans != math.inf):
+        if ans != math.inf:
             return ans
+        
         return -1
