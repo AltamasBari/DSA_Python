@@ -6,7 +6,6 @@ class Solution:
         def recursion(idx,amt):
             
             if amt == 0:
-                dp[idx][amt] =  1
                 return 1
             
             if idx == n:
