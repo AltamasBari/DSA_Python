@@ -7,5 +7,4 @@ class Solution:
                 if nums[idx] < nums[i]:
                     dp[i] = max(dp[i],dp[idx] + 1)
 
-        print(dp)
         return max(dp)
