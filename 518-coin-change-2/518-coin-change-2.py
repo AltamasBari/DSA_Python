@@ -1,7 +1,7 @@
 class Solution:
     def change(self, amount: int, coins: List[int]) -> int:
         n = len(coins)
-        
+        #1d DP
         dp = [0 for _ in range(amount+1)] 
         
         for amt in range(amount+1):
@@ -19,11 +19,11 @@ class Solution:
 
                 dp[amt] = pick + not_pick
         
-        print(dp)
         return dp[amount]
         
         
         '''
+        #2d DP from (0,0) to (n-1,amount)
         dp = [[0 for _ in range(amount+1)] for _ in range(n)]
         
         for idx in range(n):
@@ -47,7 +47,9 @@ class Solution:
         print(dp)
         return dp[n-1][amount]
         '''
+        
         '''
+        #2d DP from n-1 to 0, from 1 to amount
         dp = [[0 for _ in range(amount+1)] for _ in range(n+1)]
         
         for i in range(n):
