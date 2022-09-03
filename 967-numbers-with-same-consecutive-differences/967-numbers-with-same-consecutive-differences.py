@@ -21,4 +21,4 @@ class Solution:
         for num in range(1, 10):
             DFS(N-1, num)
 
-        return list(ans)
+        return ans
