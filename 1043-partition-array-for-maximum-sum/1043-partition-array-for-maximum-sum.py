@@ -38,7 +38,7 @@ class Solution:
             for j in range(i,min(i+k,n)):
                 length += 1
                 maxm = max(maxm,arr[j])
-                sm = (length * maxm) + recursion(j+1)
+                sm = ((j-i + 1) * maxm) + recursion(j+1)
                 ans = max(ans,sm)
             
             dp[i] = ans
