@@ -1,14 +1,23 @@
 class Solution:
     def palindromePairs(self, words: List[str]) -> List[List[int]]:
-        lookup = {w:i for i,w in enumerate(words)}
-        res = []
-        for i, w in enumerate(words):
-            for j in range(len(w)+1):
-                pre, pos = w[:j], w[j:]
-                if pre==pre[::-1] and pos[::-1] != w \
-                    and pos[::-1] in lookup:
-                        res.append([lookup[pos[::-1]], i])
-                if j != len(w) and pos==pos[::-1] \
-                    and pre[::-1] != w and pre[::-1] in lookup:
-                        res.append([i, lookup[pre[::-1]]])
-        return res
+        
+        #https://leetcode.com/problems/palindrome-pairs/discuss/79209/Accepted-Python-Solution-With-Explanation
+        def is_palindrome(check):
+            return check == check[::-1]
+
+        words = {word: i for i, word in enumerate(words)}
+        valid_pals = []
+        for word, k in words.items():
+            n = len(word)
+            for j in range(n+1):
+                pref = word[:j]
+                suf = word[j:]
+                if is_palindrome(pref):
+                    back = suf[::-1]
+                    if back != word and back in words:
+                        valid_pals.append([words[back],  k])
+                if j != n and is_palindrome(suf):
+                    back = pref[::-1]
+                    if back != word and back in words:
+                        valid_pals.append([k, words[back]])
+        return valid_pals
