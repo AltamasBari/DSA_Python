@@ -13,10 +13,8 @@ class Solution:
                 key = files[i][idx:]
                 value = files[i][:idx]
                 
-                if key in mp:
-                    mp[key] += [root + "/" + value]
-                else:
-                    mp[key] = [root+ "/" + value]
+
+                mp[key].append(root+ "/" + value)
         
         ans = []
         for value in mp.values():
